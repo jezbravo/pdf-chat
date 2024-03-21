@@ -40,9 +40,10 @@ def get_conversational_chain():
 
     Answer:
     """
+    
     model = ChatGoogleGenerativeAI(
         model="gemini-pro",
-        temperature=0.3)
+        temperature=0.7)
 
     prompt = PromptTemplate(template = prompt_template, input_variables = ["context", "question"])
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
@@ -60,7 +61,7 @@ def user_input(user_question):
         return_only_outputs=True)
 
     print(response)
-    st.write("Reply: ", response["output_text"])
+    st.write("Reply:\n", response["output_text"])
 
 def main():
     st.set_page_config("Chat PDF")
